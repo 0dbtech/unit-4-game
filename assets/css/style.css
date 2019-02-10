@@ -10,11 +10,8 @@ body{
 }
 
 .coin{
-    background-color: aqua;
-    height: 100px;
-    width: 100px;
-    margin: auto 5px;
-    float: left;
+    background-color: rgba(131, 103, 32, 0.728);
+    
 }
 
 /* <h1>Crystal Collector</h1>

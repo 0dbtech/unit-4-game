@@ -27,13 +27,13 @@ console.log("game started " + isGameStarted);
 function targetNumGen(){
       targetNum = Math.floor((Math.random() * 120) + 19);
        return;
- }
+      }
 
 
 function coinNumGen(){
       coinNum = Math.floor((Math.random() * 12) + 1);
       return coinNum;
-}
+      }
 
 
 // imageCrystal.attr("data-crystalvalue", numberOptions[i]);
@@ -45,29 +45,41 @@ function coinNumGen(){
 //       return coinVal;
 // }
 
+function pageLoad(){
+      if (isGameStarted === false){
+      console.log("page load");
+      $("#start").html("<h3>Start Game</h3>");
+      $('.coin').hide();
+      $('.counter').hide();
+      }
+      return;
+      // isGameStarted = true;
+      }
 
 function resetGame(){
-console.log("resetting game");
-$('#info').hide();
-targetNumGen();
-loadCoins();
-console.log("target # is " + targetNum);
-counter = 0;
-isGameStarted = true;
-updateDOM();
+      console.log("resetting game");
+      $('#info').hide();
+      targetNumGen();
+      loadCoins();
+      console.log("target # is " + targetNum);
+      counter = 0;
+      isGameStarted = true;
+      $('.coin').show();
+      $('.counter').show();
+      updateDOM();
 
-return;
-// isGameStarted = true;
-
-}
+      return;
+      // isGameStarted = true;
+      }
 
 function updateDOM(){
-      $("#target-number").html("<h2>Target Number: " + targetNum + "</h2>");
+      $("#start").html("<h3>New Coin</h3>");
+      $("#target-number").html("<h2>Target Coin: " + targetNum + "</h2>");
       $("#wins-dom").html("<h2>Wins: " + wins + "</h2>");
       $("#loss-dom").html("<h2>Losses: " + losses + "</h2>");
-      $("#counter").html("<h2>Counter: " + counter + "</h2>");
-return;
-}
+      $("#counter").html("<h2>Crypto Counter: " + counter + "</h2>");
+      return;
+      }
 
 function scoreCheck(){
 
@@ -85,7 +97,7 @@ function scoreCheck(){
 
       updateDOM();       
       return; 
-}
+      }
 
 function loadCoins (){
       coinNumGen()
@@ -101,11 +113,13 @@ function loadCoins (){
       $('#coin4').attr('data-coinvalue', coinNum);
       console.log(coinNum);
     return;     
-}
+      }
+
+//PAGE LOAD
+pageLoad();
 
 // Click events for coins
 $("#start").on("click", function() {
-
       console.log("game started " + isGameStarted);
       resetGame();
       console.log("game started " + isGameStarted);
@@ -113,14 +127,13 @@ $("#start").on("click", function() {
      });
 
 $(".coin").on("click", function() {
-
       var coinValue = ($(this).attr("data-coinvalue"));
       coinValue = parseInt(coinValue);
       counter += coinValue;
       console.log("coin value is " + coinValue );
       scoreCheck();  
       console.log("end");
-});
+      });
 
 // DOCUMENT READY END
-  });
+});

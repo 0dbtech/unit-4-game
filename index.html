@@ -6,29 +6,69 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Crypto Miner</title>
 <link rel="stylesheet" type="text/css" href="css/reset.css">
-<!-- Added link to the jQuery Library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-<!-- Added a link to Bootstrap-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
 </head>
+
 <body>
+  <div class ="container">
+
   <h1>Crypto Miner</h1>
-  <div id="info">Game info here</div>
-  <div id="start">Click here to start game</div>
-  <div id="target-number"></div>
-  <div id="wins-dom"></div>
-  <div id="loss-dom"></div>
-  <div id="counter"></div>
-  <div class="coin" id="coin1">coin1</div>
+  <button type="button" id="start" class="btn btn-warning"></button>
+  <!-- <div id="start">Click here to start game</div> -->
+  <div class="card bg-dark col-sm-6" id="info">
+        <p>You will be given a random cryptocurrency target coin at the start of the game.</p>
+        <p>You will have four coins below. By clicking on a coin you will add a specific amount of points to your crypto count.</p>
+        <p>You win the game by matching your crypto count to the crypto target.  You lose the game if your crypto count goes above the crypto target.</p>
+        <p>The value of each coin is hidden from you until you click on it.</p>
+        <p>Each time when the game starts, the values of each coin will change.</p>
+        <p>Happy mining!</p>
+  </div>
+
+<div class="row">
+  <div class="card bg-dark col-sm-3">
+    <div id="target-number"></div>
+  </div>
+  <div class="card bg-dark col-sm-3">
+    <div id="wins-dom"></div>
+    <div id="loss-dom"></div>
+  </div>
+  
+  </div>
+
+  <div class="row">
+
+    <div class="coin card col-sm-3" id="coin1">
+        <img class="card-img-top" src="assets/images/Cryptocurrency-Bitcoin-Blockchian-Dice-640.jpg" alt="coin">
+    </div>
+    <div class="coin card col-sm-3" id="coin2">
+      <img class="card-img-top" src="assets/images/Cryptocurrency-Bitcoin-Blockchian-Dice-640.jpg" alt="coin">
+      </div>
+    <div class="coin card col-sm-3" id="coin3">
+        <img class="card-img-top" src="assets/images/Cryptocurrency-Bitcoin-Blockchian-Dice-640.jpg" alt="coin">
+    </div>
+    <div class="coin card col-sm-3" id="coin4">
+      <img class="card-img-top" src="assets/images/Cryptocurrency-Bitcoin-Blockchian-Dice-640.jpg" alt="coin">
+    </div>
+
+  </div>
+
+<div class="row">
+    <div class="counter card bg-dark col-sm-3">
+      <div id="counter"></div>
+  </div>
+</div>
+  <!-- <div class="coin" id="coin1">coin1</div>
   <div class="coin" id="coin2">coin2</div>
   <div class="coin" id="coin3">coin3</div>
-  <div class="coin" id="coin4">coin4</div>
+  <div class="coin" id="coin4">coin4</div> -->
   
 
 <script src="assets/javascript/game.js"></script>
+
+<!-- END container div -->
+</div>
+
 </body>
 </html>
