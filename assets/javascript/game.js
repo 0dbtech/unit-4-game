@@ -19,11 +19,9 @@ var targetNum = 0;
 var wins = 0;
 var losses = 0;
 var counter = 0;
-var coin1 = 0;
-var coin2 = 0;
-var coin3 = 0;
-var coin4 = 0;
 var isGameStarted = false;
+var coinNum = 0;
+
 console.log("game started " + isGameStarted);
 
 function targetNumGen(){
@@ -31,24 +29,33 @@ function targetNumGen(){
        return;
  }
 
+
 function coinNumGen(){
-      coin1 = Math.floor((Math.random() * 12) + 1);
-      coin2 = Math.floor((Math.random() * 12) + 1);
-      coin3 = Math.floor((Math.random() * 12) + 1);
-      coin4 = Math.floor((Math.random() * 12) + 1);
-      return;
+      coinNum = Math.floor((Math.random() * 12) + 1);
+      return coinNum;
 }
 
+
+// imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+// function coinNumGen(){
+//       // add attributes
+      
+//       coin = Math.floor((Math.random() * 12) + 1);
+//       return coinVal;
+// }
 
 
 function resetGame(){
 console.log("resetting game");
+$('#info').hide();
 targetNumGen();
-coinNumGen();
+loadCoins();
 console.log("target # is " + targetNum);
 counter = 0;
 isGameStarted = true;
 updateDOM();
+
 return;
 // isGameStarted = true;
 
@@ -62,33 +69,39 @@ function updateDOM(){
 return;
 }
 
-//score check
 function scoreCheck(){
-// if ( isGameStarted = true) {
 
       if (counter === targetNum) {
-            alert("You win!");
+            alert("YOU WIN!");
             wins++;
             resetGame();
           }
       
           else if (counter >= targetNum) {
-            alert("You lose!!");
+            alert("YOU LOST!");
             losses++;
             resetGame();
           }
+
       updateDOM();       
       return; 
 }
 
-//game start
-
-//       resetGame();
-// }
-// if (isGameStarted = false){
-// resetGame();
-// }
-// else {
+function loadCoins (){
+      coinNumGen()
+      $('#coin1').attr('data-coinvalue', coinNum);
+      console.log(coinNum);
+      coinNumGen()
+      $('#coin2').attr('data-coinvalue', coinNum);
+      console.log(coinNum);
+      coinNumGen()
+      $('#coin3').attr('data-coinvalue', coinNum);
+      console.log(coinNum);
+      coinNumGen()
+      $('#coin4').attr('data-coinvalue', coinNum);
+      console.log(coinNum);
+    return;     
+}
 
 // Click events for coins
 $("#start").on("click", function() {
@@ -99,57 +112,15 @@ $("#start").on("click", function() {
       return;
      });
 
-$("#coin1").on("click", function() {
+$(".coin").on("click", function() {
 
-       console.log("coin1 clicked " + coin1);
-       counter += coin1;
-       console.log("counter " + counter);
-       scoreCheck();
-      return;
-      });
-
-$("#coin2").on("click", function() {
-
-       console.log("coin2 clicked " + coin2);
-       counter += coin2;
-       console.log("counter " + counter);
-       scoreCheck();
-       return;
-      });
-
-$("#coin3").on("click", function() {
-
-       console.log("coin3 clicked " + coin3);
-       counter += coin3;
-       console.log("counter " + counter);
-       scoreCheck();
-       return;
-      });
-
-$("#coin4").on("click", function() {
-
-       console.log("coin4 clicked " + coin4);
-       counter += coin4;
-       console.log("counter " + counter);
-       scoreCheck();
-       return;
-      });
-
-
-  
-
-   
-//game start END
-// }
-
-// else {
-// console.log("resetting game");
-// resetGame();
-// return;
-// }
-
-
+      var coinValue = ($(this).attr("data-coinvalue"));
+      coinValue = parseInt(coinValue);
+      counter += coinValue;
+      console.log("coin value is " + coinValue );
+      scoreCheck();  
+      console.log("end");
+});
 
 // DOCUMENT READY END
   });
-
